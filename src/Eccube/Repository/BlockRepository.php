@@ -15,7 +15,7 @@ namespace Eccube\Repository;
 
 use Eccube\Common\EccubeConfig;
 use Eccube\Entity\Block;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 
 /**
  * BlocRepository

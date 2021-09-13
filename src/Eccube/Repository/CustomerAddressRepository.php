@@ -14,7 +14,7 @@
 namespace Eccube\Repository;
 
 use Eccube\Entity\CustomerAddress;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 
 /**
  * CustomerAddressRepository

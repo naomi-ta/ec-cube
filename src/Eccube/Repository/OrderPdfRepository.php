@@ -15,7 +15,7 @@ namespace Eccube\Repository;
 
 use Eccube\Entity\Member;
 use Eccube\Entity\OrderPdf;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 
 /**
  * OrderPdfRepository.

@@ -17,7 +17,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Eccube\Entity\Master\OrderStatus;
 use Eccube\Repository\AbstractRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 
 /**
  * OrderStatusRepository

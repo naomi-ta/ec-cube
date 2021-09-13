@@ -16,7 +16,7 @@ namespace Eccube\Repository;
 use Eccube\Doctrine\Query\Queries;
 use Eccube\Entity\LoginHistory;
 use Eccube\Util\StringUtil;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 
 /**
  * LoginHistoryRepository

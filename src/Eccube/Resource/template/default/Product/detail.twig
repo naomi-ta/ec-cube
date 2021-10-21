@@ -93,6 +93,58 @@ file that was distributed with this source code.
 {% endblock %}
 
 {% block javascript %}
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+    var initESW = function(gslbBaseURL) {
+        embedded_svc.settings.displayHelpButton = true; //または false
+        embedded_svc.settings.language = 'ja'; //たとえば、「en」または「en-US」を入力します
+
+        embedded_svc.settings.defaultMinimizedText = 'チャットで相談'; //(エキスパートとチャットにデフォルト設定)
+        embedded_svc.settings.disabledMinimizedText = 'チャット対応時間外'; //(エージェントがオフラインにデフォルト設定)
+
+        //embedded_svc.settings.loadingText = ''; //(読み込み中にデフォルト設定)
+        //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(リリースのドメインを設定して、訪問者がチャットセッション中にサブドメインを移動できるようにします)
+
+        // チャット の設定
+        //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+            // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+            // Returns a valid button ID.
+        //};
+        //embedded_svc.settings.prepopulatedPrechatFields = {}; //事前チャットフォームの項目の自動入力を設定
+        //embedded_svc.settings.fallbackRouting = []; //ボタン ID、ユーザ ID、または userId_buttonId の配列
+        //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(デフォルトは [お問い合わせ])
+
+        embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+        embedded_svc.settings.entryFeature = 'LiveAgent';
+
+        embedded_svc.init(
+            'https://mcsvcplatform-dev-ed.my.salesforce.com',
+            'https://ecdemoonline-developer-edition.ap25.force.com/liveAgentSetupFlow',
+            gslbBaseURL,
+            '00D5h000003j74t',
+            'chat_group',
+            {
+                baseLiveAgentContentURL: 'https://c.la2-c1-ukb.salesforceliveagent.com/content',
+                deploymentId: '5725h000000TvfF',
+                buttonId: '5735h000000Tv9Y',
+                baseLiveAgentURL: 'https://d.la2-c1-ukb.salesforceliveagent.com/chat',
+                eswLiveAgentDevName: 'chat_group',
+                isOfflineSupportEnabled: false
+            }
+        );
+    };
+
+    if (!window.embedded_svc) {
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://mcsvcplatform-dev-ed.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+        s.onload = function() {
+            initESW(null);
+        };
+        document.body.appendChild(s);
+    } else {
+        initESW('https://service.force.com');
+    }
+</script>
     <script>
         eccube.classCategories = {{ class_categories_as_json(Product)|raw }};
 
